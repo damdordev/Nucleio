@@ -1,0 +1,17 @@
+{
+  "name": "com.damdor.nucleio",
+  "version": "1.0.0",
+  "displayName": "Nucleio",
+  "description": "",
+  "unity": "2022.3",
+  "publishConfig": {
+    "registry": "https://upm.pckgs.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damdordev/Nucleio.git"
+  },
+  "dependencies": {
+     "com.cysharp.unitask": "2.5.0"
+  }  
+}
