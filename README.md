@@ -25,7 +25,7 @@ using UnityEngine;
 // Define your own base interface to be used by the Game
 public interface IMyGameSystem : ISystem { }
 
-[System]
+[NucleioSystem]
 public class MovementSystem : IMyGameSystem
 {
     public bool MultithreadingSupported => true; // Can run in parallel with other multithreaded systems
@@ -36,7 +36,7 @@ public class MovementSystem : IMyGameSystem
     public void Stop() { /* Cleanup resources */ }
 }
 
-[System]
+[NucleioSystem]
 public class RenderSystem : IMyGameSystem
 {
     public bool MultithreadingSupported => false; // Must run on the main thread
@@ -64,9 +64,9 @@ var resolver = new ListSystemResolver<IMyGameSystem>(systems);
 
 **Attribute-Based:**
 ```csharp
-// Finds all classes implementing IMyGameSystem and decorated with [System]
+// Finds all classes implementing IMyGameSystem and decorated with [NucleioSystem]
 var assemblies = new List<Assembly> { typeof(MovementSystem).Assembly };
-var resolver = new AttributeBasedSystemResolver<IMyGameSystem, SystemAttribute>(assemblies);
+var resolver = new AttributeBasedSystemResolver<IMyGameSystem, NucleioSystemAttribute>(assemblies);
 ```
 
 ### 3. Create your game class

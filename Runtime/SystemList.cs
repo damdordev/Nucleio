@@ -47,6 +47,16 @@ namespace Damdor.Nucleio
         }
 
         /// <summary>
+        /// Gets a system of the specified type from the list.
+        /// </summary>
+        /// <typeparam name="T">The type of the system to get.</typeparam>
+        /// <returns>The system of the specified type, or the default value if not found.</returns>
+        public T GetSystem<T>() where T : TSystem
+        {
+            return systems.OfType<T>().FirstOrDefault();
+        }
+
+        /// <summary>
         /// Executes an action on all systems, potentially using multithreading for supported systems.
         /// </summary>
         /// <param name="action">The action to execute on each system.</param>

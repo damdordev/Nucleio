@@ -7,7 +7,7 @@ namespace Damdor.Nucleio
     /// Can be used in conjunction with <see cref="AttributeBasedSystemResolver{TSystem, TAttribute}"/>.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class SystemAttribute : Attribute  
+    public class NucleioSystemAttribute : Attribute  
     {
     }
 }
