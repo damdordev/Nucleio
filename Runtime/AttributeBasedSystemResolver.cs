@@ -14,7 +14,7 @@ namespace Damdor.Nucleio
         where TSystem : ISystem
         where TAttribute : Attribute
     {
-        private Predicate<TAttribute> predicate;
+        private Predicate<Type> predicate;
         private List<Assembly> assemblies;
         private Func<Type, TSystem> create;
         
@@ -22,9 +22,9 @@ namespace Damdor.Nucleio
         /// Initializes a new instance of the <see cref="AttributeBasedSystemResolver{TSystem, TAttribute}"/> class.
         /// </summary>
         /// <param name="assemblies">The list of assemblies to scan for systems. If null, scans all assemblies in the current AppDomain.</param>
-        /// <param name="predicate">An optional predicate to filter systems based on their attribute properties.</param>
+        /// <param name="predicate">An optional predicate to filter systems based on their type.</param>
         /// <param name="create">An optional factory function to create instances of the discovered system types. If null, uses <see cref="Activator.CreateInstance(Type)"/>.</param>
-        public AttributeBasedSystemResolver(List<Assembly> assemblies = null, Predicate<TAttribute> predicate = null, Func<Type, TSystem> create = null)
+        public AttributeBasedSystemResolver(List<Assembly> assemblies = null, Predicate<Type> predicate = null, Func<Type, TSystem> create = null)
         {
             this.predicate = predicate;
             this.assemblies = assemblies;
@@ -72,7 +72,7 @@ namespace Damdor.Nucleio
                 if (!typeof(TSystem).IsAssignableFrom(type) || type.IsAbstract || type.IsInterface) continue;
                 var attr = type.GetCustomAttribute<TAttribute>();
                 if(attr == null) continue;
-                if(predicate != null && !predicate(attr)) continue;
+                if(predicate != null && !predicate(type)) continue;
                 types.Add(type);
             }
         }
