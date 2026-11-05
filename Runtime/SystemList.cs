@@ -81,8 +81,9 @@ namespace Damdor.Nucleio
         /// <param name="action">The action to execute on each system.</param>
         public void Run(Action<TSystem> action)
         {
-            foreach (var system in AllSystems)
+            for (var i = 0; i < AllSystems.Count; ++i)
             {
+                var system = AllSystems[i];
                 if (cancellationTokenSource.IsCancellationRequested) return;
                 action(system);
             }

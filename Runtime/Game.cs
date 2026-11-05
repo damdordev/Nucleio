@@ -69,7 +69,7 @@ namespace Damdor.Nucleio
                 await UniTask.NextFrame();
             }
         }
-
+        
         /// <summary>
         /// Called before the game starts.
         /// </summary>
