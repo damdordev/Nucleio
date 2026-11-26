@@ -14,9 +14,9 @@ namespace Damdor.Nucleio
         /// Initializes a new instance of the <see cref="ListSystemResolver{TSystem}"/> class.
         /// </summary>
         /// <param name="systems">The predefined list of systems to resolve.</param>
-        public ListSystemResolver(List<TSystem> systems)
+        public ListSystemResolver(IEnumerable<TSystem> systems)
         {
-            this.systems = systems;
+            this.systems = new List<TSystem>(systems);
         }
         
         /// <summary>
